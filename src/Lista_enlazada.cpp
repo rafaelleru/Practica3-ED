@@ -46,7 +46,10 @@ Lista_enlazada<T>::Lista_enlazada(Elemento e){
   }
 }
     
-    
+template <class T>
+Lista_enlazada<T>::Lista_enlazada(Lista_enlazada<T>& l){
+  this->first = l.first;
+}
 
 template <class T>
 void Lista_enlazada<T>::add(T e){
