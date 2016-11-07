@@ -43,6 +43,12 @@ class Lista_enlazada{
   ~Lista_enlazada();
 
   /**
+   * @brief operador de copia. Asigna el contenido de la lista e en this.
+   * @param l la lista que se le pasa.
+   */
+  Lista_enlazada(Lista_enlazada<T>& l);
+
+  /**
    * @brief añade un nuevo elemento e a la lista enlazada, lo hace al final de esta.
    * @param e el elemento que se desea añadir.
    */
