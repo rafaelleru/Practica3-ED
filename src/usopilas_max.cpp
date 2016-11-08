@@ -1,20 +1,19 @@
 #include <iostream>
-#include "pila_max.h"
+#include "../include/Pila_max.h"
 
 using namespace std;
 
 int main(){
 
-  Pila_max p;
+  PilaMax<int> p;
   int i;
 
   for ( i=10; i>=0 ; i--) 
-    p.poner(i);
+    p.push(i);
   
-  while (!p.vacia() ){
-    elemento x = p.tope();
+  while (!p.size() == 0){
+    int x = p.pop();
     cout << x<<endl;
-    p.quitar();
   }     
   
   return 0;
