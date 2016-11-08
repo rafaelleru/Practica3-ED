@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../include/VectorDinamico.h"
+#include "../include/VectorDinamico.hpp"
 
 using namespace std;
 
