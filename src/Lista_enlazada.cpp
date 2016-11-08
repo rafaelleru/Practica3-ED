@@ -2,7 +2,7 @@
 //                     Lista Enlazada
 //----------------------------------------------------------------------
 
-#include "../include/Lista_enlazada.h"
+//#include "../include/Lista_enlazada.h"
 
 using namespace std;
 

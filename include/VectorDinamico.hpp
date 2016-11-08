@@ -1,6 +1,7 @@
 #ifndef __VECTOR_DINAMICO__
 #define __VECTOR_DINAMICO__
 
+#include <iostream> //debugging
 using namespace std;
 
 template <class T>
@@ -48,7 +49,8 @@ class Vector_Dinamico{
    * @brief Devuelve el valor de datos en i
    * @param i Posicion del vector
    */
-  int at(int i){
+  T at(int i){
+    //cout << "accedi a " << i << endl;
     return this->datos[i];
   }
   
@@ -87,13 +89,15 @@ class Vector_Dinamico{
 
 template <class T>
 Vector_Dinamico<T>::Vector_Dinamico(){
+  this->reservados = 1;
+  this->utilizados = 0;
   datos = new T[reservados];
-  
 }
 
 template <class T>
 Vector_Dinamico<T>::Vector_Dinamico(const Vector_Dinamico& vd){
   this->reservados=vd.reservados;
+  this->utilizados=vd.utilizados;
   datos = new T[reservados];
   this->datos = vd.datos;
 }
@@ -117,17 +121,25 @@ Vector_Dinamico<T>& Vector_Dinamico<T>::operator=(const Vector_Dinamico& vd){
 
 template <class T>
 void Vector_Dinamico<T>::resize(int n){
+  cout << "new size: " << n << endl;
   T *aux = new T[n];
-  aux = this->datos;
+  for(int i = 0; i < utilizados; i++){
+    aux[i] = datos[i];
+  }
+  delete [] datos;
   this->reservados = n;
-  this->datos = aux;
-  
+  datos = aux;
 }
 
 template <class T>
 void Vector_Dinamico<T>:: poner(T c){
   if(utilizados == reservados){
+    //cout << "redimensiono" << endl;
     resize(2*reservados);
+    datos[utilizados] = c;
+    utilizados++;
+  }else{
+    //cout << "añado: "<< c << endl << "utilizados: " << utilizados << endl;;
     datos[utilizados] = c;
     utilizados++;
   }
