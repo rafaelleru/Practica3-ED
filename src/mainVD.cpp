@@ -13,16 +13,25 @@ int main(){
   vd.poner(9);
   vd.poner(6);
 
-  for(int i=0; i < vd.utilizados; i++)
-    cout << vd.datos[i];
+  for(int i=0; i < vd.size(); i++)
+    cout << vd.at(i);
 
   vd.quitar();
 
-  for(int i=0; i < vd.utilizados; i++)
-    cout << vd.datos[i];
+  for(int i=0; i < vd.size(); i++)
+    cout << vd.at(i);
 
   vd.resize(2);
-  for(int i=0; i < vd.utilizados; i++)
-    cout << vd.datos[i];
+  
+  for(int i=0; i < vd.size(); i++)
+    cout << vd.at(i);
+
+  bool vacia = true;
+  vacia = vd.vacia();
+  cout << vacia << endl;
+
+  int tope;
+  tope = vd.tope();
+  cout << tope << endl;
 
 }

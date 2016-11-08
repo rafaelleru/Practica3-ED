@@ -37,6 +37,22 @@ class Vector_Dinamico{
   Vector_Dinamico& operator= (const Vector_Dinamico& vd);
 
   /**
+   *  @brief Devuelve el numero de elementos en el vector
+   */
+  int size(){
+    return this->utilizados;
+  }
+
+  
+  /**
+   * @brief Devuelve el valor de datos en i
+   * @param i Posicion del vector
+   */
+  int at(int i){
+    return this->datos[i];
+  }
+  
+  /**
    * @brief Cambia el tamaño de un vector creado a n
    * @param n Entero que sera el nuevo tamaño del vector
    */
