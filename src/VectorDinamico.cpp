@@ -46,15 +46,6 @@ void Vector_Dinamico<T>::resize(int n){
 }
 
 template <class T>
-bool Vector_Dinamico<T>:: vacia() const{
-  bool vacia = false;
-  if(utilizados == 0)
-    vacia = true;
-
-  return vacia;
-}
-
-template <class T>
 void Vector_Dinamico<T>:: poner(T c){
   if(utilizados == reservados){
     resize(2*reservados);

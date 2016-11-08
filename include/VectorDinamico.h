@@ -44,12 +44,12 @@ class Vector_Dinamico{
   /**
    * @brief Devuelve true si el vector tiene 0 elementos
    **/
-  bool vacia() const{ return nelem == 0;}
+  bool vacia() const{ return utilizados == 0;}
 
   /**
    * @brief añade c al final del vector, aumentando su tamaño
    * @param c valor que se añade
-   **/
+   **/ 
   void poner(T c);
 
   /**
