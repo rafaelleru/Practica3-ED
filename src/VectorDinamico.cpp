@@ -25,19 +25,19 @@ Vector_Dinamico<T>::~Vector_Dinamico(){
 }
 
 template <class T>
-Vector_Dinamico<T>::Vector_Dinamico& operator=(const Vector_Dinamico& vd){
+Vector_Dinamico<T>& Vector_Dinamico<T>::operator=(const Vector_Dinamico& vd){
   if(this != &vd){
     ~Vector_Dinamico();
     if(vd.datos)
-      Vector_Dinamico(&vd);
+      Vector_Dinamico(vd);
     else
-      datos = NULL;
+      datos = 0;
   }
   return *this;
 }
 
 template <class T>
-Vector_Dinamico<T>::void resize(int n){
+void Vector_Dinamico<T>::resize(int n){
   T *aux = new T[n];
   aux = this->datos;
   this->reservados = n;
@@ -46,7 +46,7 @@ Vector_Dinamico<T>::void resize(int n){
 }
 
 template <class T>
-Vector_Dinamico<T>::bool vacia() const{
+bool Vector_Dinamico<T>:: vacia() const{
   bool vacia = false;
   if(utilizados == 0)
     vacia = true;
@@ -55,7 +55,7 @@ Vector_Dinamico<T>::bool vacia() const{
 }
 
 template <class T>
-Vector_Dinamico<T>::void poner(T c){
+void Vector_Dinamico<T>:: poner(T c){
   if(utilizados == reservados){
     resize(2*reservados);
     datos[utilizados] = c;
@@ -64,7 +64,7 @@ Vector_Dinamico<T>::void poner(T c){
 }
 
 template <class T>
-Vector_Dinamico<T>::void quitar(){
+void Vector_Dinamico<T>::quitar(){
   if(utilizados > 0){
     utilizados--;
     if(utilizados < reservados/4)
@@ -73,7 +73,7 @@ Vector_Dinamico<T>::void quitar(){
 }
 
 template <class T>
-Vector_Dinamico<T>::T tope() const{
+T Vector_Dinamico<T>::tope() const{
   if(utilizados > 0){
     return datos[utilizados-1];
   }
