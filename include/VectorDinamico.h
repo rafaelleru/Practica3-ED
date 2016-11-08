@@ -17,7 +17,7 @@ class Vector_Dinamico{
   Vector_Dinamico& operator= (const Vector_Dinamico& vd);
 
   void resize(int n);
-  bool vacia() const{ return nelem == 0;}
+  bool vacia() const{ return utilizados == 0;}
   void poner(T c);
   void quitar();
   T tope() const;
