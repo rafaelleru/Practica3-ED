@@ -1,5 +1,6 @@
 #ifndef PILA_MAX_LIST
 #define PILA_MAX_LIS
+#include "./Lista_enlazada.h"
 
 using namespace std;
 
