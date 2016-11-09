@@ -38,6 +38,16 @@ $(OBJ)/mainVD.o: $(OBJ)/VectorDinamico.o
 	$(CXX) $(CPPFLAGS) -o $(OBJ)/mainVD.o $(SRC)/mainVD.cpp -I$(INC)
 $(OBJ)/VectorDinamico.o: $(INC)/VectorDinamico.hpp
 	$(CXX) $(CPPFLAGS) -o $(OBJ)/VectorDinamico.o $(INC)/VectorDinamico.hpp
+
+lista: $(BIN)/pruebaLE
+
+$(BIN)/pruebaLE: $(OBJ)/mainLE.o
+	$(CXX) -o $(BIN)/pruebaLE $(OBJ)/mainLE.o
+$(OBJ)/mainLE.o: $(OBJ)/ListaEnlazada.o
+	$(CXX) $(CPPFLAGS) -o $(OBJ)/mainLE.o $(SRC)/mainListaEnlazada.cpp -I$(INC)
+$(OBJ)/ListaEnlazada.o: $(INC)/Lista_enlazada.hpp
+	$(CXX) $(CPPFLAGS) -o $(OBJ)/ListaEnlazada.o $(INC)/Lista_enlazada.hpp
+
 # ************ Generación de documentación ******************
 documentacion:
 	doxygen doc/doxys/Doxyfile

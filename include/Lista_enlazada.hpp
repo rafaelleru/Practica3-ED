@@ -84,11 +84,13 @@ class Lista_enlazada{
 //----------------------------------------------------------------------
 //                     Lista Enlazada
 //----------------------------------------------------------------------
-
+#include <iostream>
 
 template <class T>
 Lista_enlazada<T>::Lista_enlazada(){
+  n = 0;
   first = new Elemento;
+  last = first;
 }
 
 template <class T>
@@ -129,15 +131,17 @@ Lista_enlazada<T>::Lista_enlazada(Elemento e){
 template <class T>
 Lista_enlazada<T>::Lista_enlazada(Lista_enlazada<T>& l){
   this->first = l.first;
+  this->last = l.last;
+  this->n = l.n;
 }
 
 template <class T>
 void Lista_enlazada<T>::add(T e){
-  last->sig = new Elemento;
-  Elemento *aux = last->sig;
+  Elemento *aux = last;
   aux->sig = new Elemento;
+  aux = aux->sig;
   aux->valor = e;
-  last->sig = aux;
+  last = aux;
   n++;
 }
 
@@ -145,11 +149,11 @@ template <class T>
 void Lista_enlazada<T>::remove(int index){
   Elemento* aux;
   Elemento* aux2;
-  Elemento* aux3;
   int i = 0;
   aux = first;
   while(i < index-1 && aux->sig !=0){
     aux = aux->sig;
+    i++;
   }
 
   aux2 = aux->sig->sig;
@@ -158,20 +162,24 @@ void Lista_enlazada<T>::remove(int index){
 
   n--;
 }
-  
+
+
 template <class T>
 T Lista_enlazada<T>::at(int index){
-  int cont = 0;
   Elemento *e = first;
-  for(cont; cont < index; ++cont){
+  for(int i=0; i <= index; ++i){
     e = e->sig;
   }
-
   return e->valor;
 }
 
 template <class T>
 int Lista_enlazada<T>::size(){
   return n;
+}
+
+template <class T>
+T Lista_enlazada<T>::getLast(){
+  return last->valor;
 }
 
