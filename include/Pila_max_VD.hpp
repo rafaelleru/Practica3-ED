@@ -31,7 +31,7 @@ public:
    * @brief Crea un vector que guarda los valores del parametro
    * @param l Lista enlazada cuyo vector guardara los valores de sus nodos
    */
-  PilaMax(Lista_enlazada<T> l);
+  PilaMax(Lista_enlazada<T>& l);
 
   /**
    * @brief Construye un objeto con igual vector y maximo que p
@@ -112,7 +112,7 @@ PilaMax<T>::PilaMax(Lista_enlazada<T> l){
   this->vector();
   T maximo = l.at(0);
   for(int i=0; i<l.size(); ++i){
-    this->datos[i] = l.at(i);
+    this->vector.poner(l.at(i));
     if(l.at(i) > maximo)
       maximo = l.at(i);
   }
@@ -120,10 +120,8 @@ PilaMax<T>::PilaMax(Lista_enlazada<T> l){
 
 template <class T>
 PilaMax<T>::PilaMax(PilaMax<T>& p){
+  this->vector = p.vector;
   this->maximo = p.maximo;
-  for(int i=0; i<p.size(); ++i){
-    this->vector()= p.vector();
-  }
 }
 
 template <class T>
@@ -132,19 +130,31 @@ PilaMax<T>::~PilaMax(){}
 template <class T>
 void PilaMax<T>::push(T e){
   this->vector.poner(e);
-  if(maximo < e)
+  if(e > this->maximo){
     maximo = e;
 }
 
 template <class T>
 T PilaMax<T>::pop(){
+
   this->vector.tope();
+
+  /* T to_ret = vector.at(vector.size()); //Si hay core mirar aqui.
+  vector.remove(vector.size());
+  if (to_ret == maximo){
+    maximo = 0;
+    for(int i=0; i < vector.size(); ++i){
+      if(vector.at(i) > maximo)
+	maximo = vector.at(i);
+    }
+  }
+  return to_ret;
+  */
 }
 
 template <class T>
 T PilaMax<T>::getMaximo(){
-  if(this->vector.size() > 0)
-    return maximo;
+  return this->maximo;
 }
 
 template <class T>
@@ -175,3 +185,4 @@ template <class T>
 bool PilaMax<T>::operator!=(PilaMax<T>& p){
   return !(*this == p);
 }
+
