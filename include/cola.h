@@ -121,6 +121,20 @@ class Cola{
     int num_elementos() const{ 
       return num_elem; 
     }
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * @author Rafael Leyva Ruiz
+     */
+
+    /**
+     * @brief Compara dos colas para ver si son iguales
+     * @param c lista con la que se compara
+     * @return true si el contenido de ambas colas es el mismo.
+               False en otro caso.
+     */
+    
 };
 
 #include <cola.cpp>

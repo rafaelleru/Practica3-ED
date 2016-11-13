@@ -20,33 +20,9 @@ $(OBJ)/usocolas.o: $(INC)/cola.h $(SRC)/usocolas.cpp
 pila: $(BIN)/pilamax
 
 $(BIN)/pilamax: $(OBJ)/usopilamax.o
-	$(CXX) -o $(BIN)/pilamax $(OBJ)/usopilamax.o $(OBJ)/pilamaxlist.o
-$(OBJ)/usopilamax.o: $(SRC)/usopilas_max.cpp $(OBJ)/pilamaxlist.o
-	$(CXX) $(CPPFLAGS) -o $(OBJ)/usopilamax.o $(SRC)/usopilas_max.cpp $(OBJ)/pilamaxlist.o -I$(INC)
-
-$(OBJ)/pilamaxlist.o: $(SRC)/Pila_max_list.cpp $(OBJ)/Lista_enlazada.o
-	$(CXX) $(CPPFLAGS) -o $(OBJ)/pilamaxlist.o $(INC)/Pila_max_list.hpp $(OBJ)/Lista_enlazada.o -I$(INC)
-
-$(OBJ)/Lista_enlazada.o: $(SRC)/Lista_enlazada.cpp
-	$(CXX) $(CPPFLAGS) -o $(OBJ)/Lista_enlazada.o $(INC)/Lista_enlazada.hpp -I$(INC)
-
-vector: $(BIN)/pruebaVD
-
-$(BIN)/pruebaVD: $(OBJ)/mainVD.o
-	$(CXX) -o $(BIN)/pruebaVD $(OBJ)/mainVD.o
-$(OBJ)/mainVD.o: $(OBJ)/VectorDinamico.o
-	$(CXX) $(CPPFLAGS) -o $(OBJ)/mainVD.o $(SRC)/mainVD.cpp -I$(INC)
-$(OBJ)/VectorDinamico.o: $(INC)/VectorDinamico.hpp
-	$(CXX) $(CPPFLAGS) -o $(OBJ)/VectorDinamico.o $(INC)/VectorDinamico.hpp
-
-lista: $(BIN)/pruebaLE
-
-$(BIN)/pruebaLE: $(OBJ)/mainLE.o
-	$(CXX) -o $(BIN)/pruebaLE $(OBJ)/mainLE.o
-$(OBJ)/mainLE.o: $(OBJ)/ListaEnlazada.o
-	$(CXX) $(CPPFLAGS) -o $(OBJ)/mainLE.o $(SRC)/mainListaEnlazada.cpp -I$(INC)
-$(OBJ)/ListaEnlazada.o: $(INC)/Lista_enlazada.hpp
-	$(CXX) $(CPPFLAGS) -o $(OBJ)/ListaEnlazada.o $(INC)/Lista_enlazada.hpp
+	$(CXX) -o $(BIN)/pilamax $(OBJ)/usopilamax.o
+$(OBJ)/usopilamax.o: $(SRC)/usopilas_max.cpp
+	$(CXX) $(CPPFLAGS) -o $(OBJ)/usopilamax.o $(SRC)/usopilas_max.cpp
 
 # ************ Generación de documentación ******************
 documentacion:

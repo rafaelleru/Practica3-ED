@@ -1,5 +1,5 @@
 #ifndef __PILA_MAX_VD__
-#defind __PILA_MAX_VD__
+#define __PILA_MAX_VD__
 
 #include "./VectorDinamico.hpp"
 #include "./Lista_enlazada.hpp"
@@ -28,12 +28,6 @@ public:
   PilaMax(T e);
 
   /**
-   * @brief Crea un vector que guarda los valores del parametro
-   * @param l Lista enlazada cuyo vector guardara los valores de sus nodos
-   */
-  PilaMax(Lista_enlazada<T>& l);
-
-  /**
    * @brief Construye un objeto con igual vector y maximo que p
    * @param p Objeto de la clase PilaMax que se desea copiar
    */
@@ -51,10 +45,16 @@ public:
   void push(T e);
 
   /**
-   * @brief Devuelve el ultimo elemento del vector
+   * @brief Elimina el ultimo elemento del vector
    */
-  T pop();
+  void pop();
 
+  /**
+   * @brief devuelve el tope de la cola
+   * @return el tope de la pila
+   */
+
+  T get();
   /**
    * @brief Devuelve el mayor valor del vector
    */
@@ -96,26 +96,13 @@ public:
 
 template <class T>
 PilaMax<T>::PilaMax(){
-  this->vector();
   T maximo = 0;
 }
 
 template <class T>
 PilaMax<T>::PilaMax(T e){
-  this->vector();
   this->vector.poner(e);
   this->maximo = e;
-}
-
-template <class T>
-PilaMax<T>::PilaMax(Lista_enlazada<T> l){
-  this->vector();
-  T maximo = l.at(0);
-  for(int i=0; i<l.size(); ++i){
-    this->vector.poner(l.at(i));
-    if(l.at(i) > maximo)
-      maximo = l.at(i);
-  }
 }
 
 template <class T>
@@ -132,24 +119,17 @@ void PilaMax<T>::push(T e){
   this->vector.poner(e);
   if(e > this->maximo){
     maximo = e;
+  }
 }
 
 template <class T>
-T PilaMax<T>::pop(){
+void PilaMax<T>::pop(){
+  this->vector.quitar();
+}
 
-  this->vector.tope();
-
-  /* T to_ret = vector.at(vector.size()); //Si hay core mirar aqui.
-  vector.remove(vector.size());
-  if (to_ret == maximo){
-    maximo = 0;
-    for(int i=0; i < vector.size(); ++i){
-      if(vector.at(i) > maximo)
-	maximo = vector.at(i);
-    }
-  }
-  return to_ret;
-  */
+template <class T>
+T PilaMax<T>::get(){
+  return this->vector.tope();
 }
 
 template <class T>
@@ -163,18 +143,18 @@ int PilaMax<T>::size(){
 }
 
 template <class T>
-PilaMax& PilaMax<T>::operator=(PilaMax<T>& p){
+PilaMax<T>& PilaMax<T>::operator=(PilaMax<T>& p){
   this->vector = p.vector;
   this->maximo = p.maximo;
 }
 
 template <class T>
 bool PilaMax<T>::operator==(PilaMax<T>& p){
+  bool igual = false;
   if(this->vector.size() == p.vector.size()){
-    bool igual = true;
-    
+    igual = true;
     for(int i=0; i<this->vector.size() && igual; ++i){
-      if(this->vector.datos[i] != )
+      if(this->vector.datos[i] != p.datos[i])
 	igual = false;
     }
   }

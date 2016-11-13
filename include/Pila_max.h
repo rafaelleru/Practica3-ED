@@ -1,8 +1,8 @@
-#define CUAL_COMPILA 2
+#define CUAL_COMPILA 1
 #if CUAL_COMPILA==1
-#include "./Pila_max_vd.h"
+#include <./Pila_max_VD.hpp>
 #elif CUAL_COMPILA==2
-#include "./Pila_max_list.h"
+#include <./Pila_max_list.hpp>
 #else
-#include "./pila_max_cola.h"
+#include <./Pila_max_cola.hpp>
 #endif
